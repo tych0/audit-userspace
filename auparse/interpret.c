@@ -803,10 +803,9 @@ static const char *print_proctitle(const char *val)
 		size_t len = strlen(val) / 2;
 		const char *end = out + len;
 		char *ptr = out;
-		while ((ptr  = rawmemchr(ptr, '\0'))) {
-			if (ptr >= end)
-				break;
-			*ptr = ' ';
+		while (ptr < end) {
+			if (*ptr == '\0')
+				*ptr = ' ';
 			ptr++;
 		}
 	}
